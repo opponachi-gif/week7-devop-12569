@@ -1,27 +1,33 @@
 const express = require('express');
 const app = express();
-const PORT = 3000;
+
+const products = [
+    { id: 1, name: 'Keyboard' },
+    { id: 2, name: 'Mpuse' },
+]
 
 app.get('/', (req, res) => {
-    //res.send('Hello, Welcome to my API!');
-    res.status(200).json({ message: 'Hello, Welcome to my API!' });
+    // res.send(`Hello,Welcome to my API!`);
+    res.status(200).json({ message: 'Welcome to my API!' })
 });
 
+//http://localhost:3000/api/users
 app.get('/api/users', (req, res) => {
-    res.status(200).json(
-        { id: 1, name: 'John Doe', },
-        { id: 2, name: 'Jane Smith', },
-    );
+    res.status(200).json([
+        { id: 1, name: 'Somchai' },
+        { id: 2, name: 'Somsak' }
+    ]);
 });
 
+//http://localhost:3000/api/products
 app.get('/api/products', (req, res) => {
-    res.status(200).json(
-        { id: 1, name: 'notebook', price: 350 },
-    );
+    res.status(200).json([
+        // { id: 101, name: 'Notebook', price: 350 }
+        res.status(200).json(products)
+    ]);
 });
 
-const  PORT = 3000;
-
+const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });
